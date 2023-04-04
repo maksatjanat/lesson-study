@@ -23,7 +23,7 @@ if(isset($_GET['material_id'])){
 
 }
 
-if($access == 1){
+if(isset($_SESSION['id_user'])){
 ?>
 
 <div class="full-page-container">
@@ -64,7 +64,12 @@ if($access == 1){
 			<div class="row">
 
 				<div class="col-md-12 text-center">
-					<iframe width="70%" height="500" src="<?=$r_info_material_id['course_material'];?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<?=$r_info_material_id['course_material'];?>
+				</div>
+
+				<div class="col-md-12 text-center " style="margin-top: 40px">
+                    <b style="font-weight: bolder; font-size: 1.3rem; margin-bottom: 30px">Задача на урок</b> <br>
+					<?=$r_info_material_id['exercise'];?>
 				</div>
 
 			</div>
@@ -82,3 +87,4 @@ function DoNav(url)
    document.location.href = url;
 }
 </script>
+

@@ -83,8 +83,8 @@ if(isset($_POST['give_feedback'])){
 									<span style="font-size: 24px; color: #F33816; font-weight: bold"> <?=$price?> тг. </span>								
 								</p>
 								<?php
-								if($access == 0) echo "<p align='right'><button class='button button-sliding-icon ripple-effect' style='width: 170px;'> Открыть курс <i class='icon-material-outline-arrow-right-alt'></i></button></p>";
-								else if($access == 1) echo "<a href='?page=course_materials&course_id=$_GET[course_id]'><p align='right'><button class='button button-sliding-icon ripple-effect' style='width: 170px;'> Курсқа өту <i class='icon-material-outline-arrow-right-alt'></i></button></p></a>";
+								if(!isset($_SESSION['id_user'])) echo "<a href='?page=login'><p align='right'><button class='button button-sliding-icon ripple-effect' style='width: 170px;'> Открыть курс <i class='icon-material-outline-arrow-right-alt'></i></button></p></a>";
+								else if(isset($_SESSION['id_user'])) echo "<a href='?page=course_materials&course_id=$_GET[course_id]'><p align='right'><button class='button button-sliding-icon ripple-effect' style='width: 170px;'> Открыть курс <i class='icon-material-outline-arrow-right-alt'></i></button></p></a>";
 	
 								?>
 							</div>

@@ -10,7 +10,7 @@ function ListCourseMaterials(){
       <div class='col-md-4'>
         <div class='box box-widget widget-user'>
           <div class='widget-user-header bg-black' style='width: 100%; height: 250px; padding: 0 !important;'>
-            <iframe width='100%' height='250px' src='$r[course_material]' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+            $r[course_material]
           </div>
   
           <div class='box-footer' style='background-color: #ECF0F5'>
@@ -62,7 +62,7 @@ if(isset($_POST['update_info_course'])){
   header("Location:./?courses&course_info_id=$_GET[course_info_id]");
 }else if(isset($_POST['edit_course_material'])){
 
-  mysql_query("UPDATE db_list_course_materials SET course_material_theme = '$_POST[course_material_theme]', course_material = '$_POST[course_material]' WHERE course_material_id = $_POST[course_material_id] ");
+  mysql_query("UPDATE db_list_course_materials SET course_material_theme = '$_POST[course_material_theme]', course_material = '$_POST[course_material]', exercise = '$_POST[exercise]' WHERE course_material_id = $_POST[course_material_id] ");
   header("Location:./?courses&course_info_id=$_GET[course_info_id]");
 }
 
@@ -220,6 +220,9 @@ if(isset($_POST['update_info_course'])){
           <div class="form-group">
             <input name="course_material" type="text" class="form-control" placeholder="Ссылка на видео" autocomplete='off' required>
           </div>
+          <div class="form-group">
+            <input name="exercise" type="text" class="form-control" placeholder="Задание" autocomplete='off' required>
+          </div>
         </div>
 
         <div class="modal-footer">
@@ -255,6 +258,8 @@ if(isset($_POST['update_info_course'])){
 </div>
 
 <script>
+
+
 function EditMaterial(course_material_id){
 
   $.ajax({
@@ -264,6 +269,7 @@ function EditMaterial(course_material_id){
     data: {course_material_id: course_material_id, process: 1},
     success: function(result) {
       $('#EditCourseMaterialResult').html(result);
+        CKEDITOR.replace('exerciseCKEditor')
     },
   });
 }

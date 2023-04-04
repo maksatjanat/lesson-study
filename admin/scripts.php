@@ -1,5 +1,13 @@
 ﻿<script type="application/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="application/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+//get the width of the container for the video in this case "body" then divide by 560 then use that as a scaling factor
+        $("iframe").width( 490 );
+        $("iframe").height( 250 );
+    });
+</script>
 <script type="application/javascript">
   $.widget.bridge('uibutton', $.ui.button);
 </script>

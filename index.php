@@ -23,6 +23,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 	
 	<script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+//get the width of the container for the video in this case "body" then divide by 560 then use that as a scaling factor
+            $("iframe").width( 850 );
+            $("iframe").height( 500 );
+        });
+    </script>
 	<script src="js/jquery-migrate-3.0.0.min.js"></script>
 	<script src="js/mmenu.min.js"></script>
 	<script src="js/tippy.all.min.js"></script>
