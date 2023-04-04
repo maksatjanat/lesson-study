@@ -15,7 +15,7 @@
 					<ul id="responsive">
 						<li><a href="?page=all_courses&search=">Курсы</a></li>
 						<?php
-						if(isset($_SESSION['username_student'])) echo"<li><a href='logout.php' class='button ripple-effect' style='color: white; font-weight: 400;'> $_SESSION[username_student] </a></li>";
+						if(isset($_SESSION['username_student'])) echo"<li><a href='logout.php' class='button ripple-effect' style='color: white; font-weight: 400;'> $_SESSION[name_user] </a></li>";
 						else echo"<li><a href='?page=login' class='button ripple-effect' style='color: white; font-weight: 400;'> Вход / Регистрация </a></li>";
 						?>
 					</ul>

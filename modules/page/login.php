@@ -63,6 +63,17 @@
 </div>
 
 <script>
+    <?php if (isset($_SESSION['registered'])) { ?>
+        alert('Регистрация прошла успешна');
+
+    <?php
+        unset($_SESSION['registered']);
+    } ?>
+    <?php if (isset($_SESSION['exist'])) { ?>
+    alert('Вы уже регистрировались');
+    <?php
+    unset($_SESSION['exist']);
+    } ?>
 	function Register(){
 	  window.location.href = '?page=register';
 	}

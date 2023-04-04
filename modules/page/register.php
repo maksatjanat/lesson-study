@@ -1,3 +1,30 @@
+<?php
+if (isset($_POST['fullname'])) {
+    if (emailExist($_POST['fullname'])) {
+        header("Location: /?page=login");
+        die();
+    } else {
+        addUser($_POST['fullname'], $_POST['phone'], $_POST['password']);
+    }
+}
+
+function emailExist($email) {
+    $query = mysql_query("SELECT * FROM db_users WHERE username = '$_POST[phone]'");
+    $result = mysql_fetch_assoc($query);
+    $_SESSION['exist'] = true;
+    return $result==true?1:0;
+}
+function addUser($fullname, $phone, $password)
+{
+    $password = md5($password);
+	$newUserQuery = mysql_query("INSERT INTO db_users (username, password, fname_user, name_user, level_user, access) 
+                                               VALUES ('$phone', '$password', ' ', '$fullname', 1, 1) ");
+	$_SESSION['registered'] = 'true';
+	if($newUserQuery == true) header("Location: /?page=login");
+
+}
+?>
+
 <div>
 	<div id="titlebar" class="gradient">
 		<div class="container">
@@ -35,12 +62,12 @@
 					<form method="post" id="login-form">
 						<div class="input-with-icon-left">
 							<i class="icon-material-outline-account-circle"></i>
-							<input type="text" class="input-text with-border" name="emailaddress" placeholder="Ваше ФИО" required>
+							<input type="text" class="input-text with-border" name="fullname" placeholder="Ваше ФИО" required>
 						</div>
 
 						<div class="input-with-icon-left">
 							<i class="icon-feather-smartphone"></i>
-							<input type="text" class="input-text with-border" name="emailaddress" data-inputmask="&quot;mask&quot;: &quot;9(999) 999-9999&quot;" data-mask="" placeholder="Телефон" required>
+							<input type="text" class="input-text with-border" name="phone" data-inputmask="&quot;mask&quot;: &quot;9(999) 999-9999&quot;" data-mask="" placeholder="Телефон" required>
 						</div>
 						
 						<div class="input-with-icon-left">
